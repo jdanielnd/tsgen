@@ -24,7 +24,9 @@ add.price <- function(tser, elast, random.price=FALSE, inf.limit=NULL, sup.limit
   ## Gerando Resposta ao Preco
   rp <- vector("numeric",length(price))
   rp[1] <- 0
-  rp[-1] <- ((price[-length(price)] - price[-1])/price[-length(price)])*elast
+  rp[-1] <- (price[-1] - price[-length(price)])/price[-length(price)]
+  
+  rp <- rp*elast
 
   ## Gerando Volume Basico c/ Sazonalidade e Resposta ao Preco
   vbsazrp <- tser*(rp + 1)
