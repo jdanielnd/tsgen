@@ -1,0 +1,12 @@
+Package: tsgen
+Type: Package
+Title: Time series generator
+Version: 1.0
+Date: 2012-05-05
+Author: Joao Daniel, Claudio Duarte
+Authors@R: c(person("Joao", "Duarte", role = c("aut", "cre"), email
+        = "jdanielnd@gmail.com"), person("Claudio", "Duarte",
+        role = c("aut","cre")))
+Maintainer: Joao Daniel <jdanielnd@gmail.com>
+Description: Provide tools to generate time series
+License: MIT
