@@ -5,9 +5,9 @@
 ## Quick start:
 
 ### Step 1
-Install **tsgen** from CRAN:
+Install **tsgen** from source:
 
-    install.packages("tsgen")
+    $ R CMD INSTALL tsgen_1.0.tar.gz
 
 That's it! You have just installed the package. Follow the next steps to generate some example data.
 
