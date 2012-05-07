@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>tsgen by jdanielnd</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>tsgen</h1>
+        <p>R package that provide tools to generate time series</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/jdanielnd/tsgen" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/jdanielnd/tsgen/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/jdanielnd/tsgen/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>Welcome to tsgen project!</h2>
+
+<p><strong>tsgen</strong> is an R package that provide tools for time series data generation. It's aimed to generate series of demand, i.e., quantity of a product sold, and than add seasonality and response to price to it.</p>
+
+<h2>Quick start:</h2>
+
+<h3>Step 1</h3>
+
+<p>Download <strong>tsgen</strong> source from <a href="https://github.com/jdanielnd/tsgen/downloads">this</a> page and install it:</p>
+
+<pre><code>$ R CMD INSTALL tsgen_1.0.tar.gz
+</code></pre>
+
+<p>That's it! You have just installed the package. Follow the next steps to generate some example data.</p>
+
+<h3>Step 2</h3>
+
+<p>Generate a basic time series, based on some <strong>key points</strong>. It will use the loess fit to generate points between your key points, interpolating the series.</p>
+
+<pre><code>library(tsgen)
+kp &lt;- c(100,110,140,130,115)
+bs &lt;- basic.series(kp,start=c(2009,1))
+</code></pre>
+
+<h3>Step 3</h3>
+
+<p>Add <strong>seasonality</strong> to the basic series. This seasonality can be either additive or multiplicative. In this case we will use a multiplicative seasonality, with normal distribution with standard deviation equals to 0.08</p>
+
+<pre><code>bss &lt;- add.season(bs, s.sd=0.08)
+</code></pre>
+
+<h3>Step 4</h3>
+
+<p>Add a price response to the series, given a price variation and a price elasticity of demand. In this case our prices will be generated via loess interpolation, like we did for the quantity.</p>
+
+<pre><code>bssp &lt;- add.price(bss, elast=-2, p.vec=c(6,8,7,6))
+</code></pre>
+
+<p>And that's it! So we have generated 3 objects:</p>
+
+<ul>
+<li>bs - basic series. It doesn't have seasonality or price response, and will be used as a basis for building other series.</li>
+<li>bss - basic series with seasonality.</li>
+<li>bssp - basic series with seasonality and price response. It's actually a list with the series value with seasonality and price, the generated values for the price and the generated values for elasticity (or a unique value, depending on whether you input on value or a vector to be interpolated).</li>
+</ul><h3>Authors and Contributors</h3>
+
+<p>This package was idealised by Claudio Duarte and written by <a href="https://github.com/jdanielnd" class="user-mention">@jdanielnd</a>. </p>
+
+<h3>Support or Contact</h3>
+
+<p>Having trouble with the package? Contact <a href="https://github.com/jdanielnd" class="user-mention">@jdanielnd</a> or submit a issue on our page and we’ll help you sort it out.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/jdanielnd">jdanielnd</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
