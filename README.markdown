@@ -5,7 +5,7 @@
 ## Quick start:
 
 ### Step 1
-Install **tsgen** from source:
+Download **tsgen** source from [this](https://github.com/jdanielnd/tsgen/downloads) page and install it:
 
     $ R CMD INSTALL tsgen_1.0.tar.gz
 
